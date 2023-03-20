@@ -1,0 +1,16 @@
+Classes:
+
+LVM (Superclass):
+Instance Variable - String UUID, String Name
+
+PhysicalDrive (Subclass):
+Instance Variable - int Size
+
+PV (Subclass):
+Instance Variable - int Size
+
+VG (Subclass):
+Instance Variable - PV[], LV[]
+
+LV (Subclass):
+Instance Variable - int Size, Object VG
