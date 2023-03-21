@@ -6,6 +6,7 @@ public class Runner {
         Scanner s = new Scanner(System.in);
         String choice = "";
         System.out.println("Welcome to the LVM System");
+        LVM l = new LVM();
         while (!(choice.equals("exit"))){
             System.out.print("cmd#: ");
             choice = s.nextLine();
@@ -16,10 +17,11 @@ public class Runner {
                 int size = Integer.parseInt(choice);
                 UUID u = UUID.randomUUID();
                 PhysicalDrive p = new PhysicalDrive(name, u.toString(), size);
+                l.addDrives(p.getDrive());
                 System.out.println("Drive " + name + " installed");
             }
             if (choice.contains("list-drives")){
-                System.out.print(LVM.printDrives());
+                System.out.print(l.printDrives());
             }
         }
 

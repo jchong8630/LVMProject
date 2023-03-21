@@ -3,12 +3,17 @@ import java.util.ArrayList;
 public class LVM {
     private String name;
     private String UUID;
-    private int size;
-    private static ArrayList<String> drives;
+    private ArrayList<String> drives;
 
     public LVM(String n, String UUID){
         name = n;
         this.UUID = UUID;
+        drives = new ArrayList<>();
+    }
+
+    public LVM(){
+        name = null;
+        this.UUID = null;
         drives = new ArrayList<>();
     }
 
@@ -23,11 +28,10 @@ public class LVM {
     public void addDrives(String drive){
         drives.add(drive);
     }
-
-    public static String printDrives(){
+    public String printDrives(){
         String result = "";
-        for (int i = 0; i < drives.size(); i++) {
-            result += drives.get(i) + "\n";
+        for (String drive : drives) {
+            result += drive + "\n";
         }
         return result;
     }
