@@ -17,11 +17,26 @@ public class Runner {
                 int size = Integer.parseInt(choice);
                 UUID u = UUID.randomUUID();
                 PhysicalDrive p = new PhysicalDrive(name, u.toString(), size);
-                l.addDrives(p.getDrive());
+                l.addDrives(p);
                 System.out.println("Drive " + name + " installed");
             }
             if (choice.contains("list-drives")){
                 System.out.print(l.printDrives());
+            }
+            if (choice.contains("pvcreate")){
+                choice = choice.substring(9);
+                String name = choice.substring(0, choice.indexOf(" "));
+                choice = choice.substring(choice.indexOf(" ") + 1);
+                String link = choice;
+                UUID u = UUID.randomUUID();
+                PhysicalVolume p = new PhysicalVolume(name, u.toString(), link, l.getDrives());
+                if (p.checker()){
+                    System.out.println(p.getName() + " created");
+                    l.addPV(p);
+                }
+            }
+            if (choice.contains("pvlist")){
+                System.out.println(l.printPV());
             }
         }
 

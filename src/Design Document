@@ -1,13 +1,23 @@
 Classes:
 
 LVM (Superclass):
-Instance Variable - String UUID, String Name
+Instance Variable - String UUID, String Name, ArrayList<PhysicalDrive> drives
+getName()
+getUUID()
+getDrives()
+addDrives()
+printDrives() prints all drives in a list
 
 PhysicalDrive (Subclass):
-Instance Variable - int Size
+Instance Variable - int size, static int totalSize
+getDrive() return a string of the drive, size, uuid in the proper format
+getSize()
+getTotalSize()
 
 PV (Subclass):
-Instance Variable - int Size
+Instance Variable - int Size, String link name
+getHardDriveSize() gets the size of the hard drive that correlates with the pv name
+chekcer() checks if the pv can be linked to the hard drive
 
 VG (Subclass):
 Instance Variable - PV[], LV[]
