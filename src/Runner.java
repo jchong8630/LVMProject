@@ -36,7 +36,7 @@ public class Runner {
                 }
             }
             if (choice.contains("pvlist")){
-                System.out.println(l.printPV());
+                System.out.print(l.printPV());
             }
         }
 
