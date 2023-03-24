@@ -18,7 +18,11 @@ public class PhysicalVolume extends LVM{
         return (size != 0);
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public String getDrive(){
-        return super.getName() + " [" + size + "G]" + "[" + super.getUUID() +"]";
+        return getName() + " [" + size + "G]" + "[" + getUUID() +"]";
     }
 }

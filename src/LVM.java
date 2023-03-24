@@ -5,6 +5,7 @@ public class LVM {
     private String UUID;
     private ArrayList<PhysicalDrive> drives;
     private ArrayList<PhysicalVolume> pvs;
+    private ArrayList<VolumeGroup> vgs;
 
 
     public LVM(String n, String UUID){
@@ -12,6 +13,7 @@ public class LVM {
         this.UUID = UUID;
         drives = new ArrayList<>();
         pvs = new ArrayList<>();
+        vgs = new ArrayList<>();
     }
 
     public LVM(){
@@ -19,6 +21,7 @@ public class LVM {
         this.UUID = null;
         drives = new ArrayList<>();
         pvs = new ArrayList<>();
+        vgs = new ArrayList<>();
     }
 
     public String getName() {
@@ -33,9 +36,14 @@ public class LVM {
         return drives;
     }
 
+    public ArrayList<PhysicalVolume> getPvs() {
+        return pvs;
+    }
+
     public void addDrives(PhysicalDrive drive){
         drives.add(drive);
     }
+    public void addVG(VolumeGroup vg){vgs.add(vg);}
     public void addPV(PhysicalVolume pv){
         pvs.add(pv);
     }
@@ -51,6 +59,14 @@ public class LVM {
         String result = "";
         for (PhysicalDrive drive : drives) {
             result += drive.getDrive() + "\n";
+        }
+        return result;
+    }
+
+    public String printVG(){
+        String result = "";
+        for (VolumeGroup vg : vgs) {
+            result += vg.getDrive() + "\n";
         }
         return result;
     }

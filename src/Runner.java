@@ -38,6 +38,21 @@ public class Runner {
             if (choice.contains("pvlist")){
                 System.out.print(l.printPV());
             }
+            if (choice.contains("vgcreate")){
+                choice = choice.substring(9);
+                String name = choice.substring(0, choice.indexOf(" "));
+                choice = choice.substring(choice.indexOf(" ") + 1);
+                String link = choice;
+                UUID u = UUID.randomUUID();
+                VolumeGroup v = new VolumeGroup(name, u.toString(), link, l.getPvs());
+                if (v.checker()){
+                    System.out.println(v.getName() + " created");
+                    l.addVG(v);
+                }
+            }
+            if (choice.contains("vglist")){
+                System.out.print(l.printVG());
+            }
         }
 
     }
