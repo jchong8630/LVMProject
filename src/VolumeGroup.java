@@ -16,7 +16,7 @@ public class VolumeGroup extends LVM{
         }
         availableSize = size;
         names = new ArrayList<>();
-        names.add(n);
+        names.add(linkName);
     }
 
     public void addSize(PhysicalVolume physicalVolume, VolumeGroup vg){
@@ -24,21 +24,29 @@ public class VolumeGroup extends LVM{
         vg.availableSize += physicalVolume.getSize();
     }
 
-    public void vgAdd(String choice, ArrayList<VolumeGroup> vgs){
-        choice = choice.substring(9);
-        String name = choice.substring(0, choice.indexOf(" "));
-        choice = choice.substring(choice.indexOf(" ") + 1);
-        String link = choice;
+    public int getSize(){
+        return size;
+    }
+
+    public boolean vgAdd(ArrayList<PhysicalVolume> pvs, ArrayList<VolumeGroup> vgs){
         for (VolumeGroup vg : vgs){
-            if (vg.getName().equals(name)){
-                addSize();
+            if (vg.getName().equals(getName())){
+                for (PhysicalVolume pv : pvs){
+                    if (pv.getName().equals(linkName)){
+                        addSize(pv, vg);
+                        vg.names.add(linkName);
+                        return true;
+                    }
+                }
             }
         }
+        return false;
     }
 
     public boolean checker(){
         return (size != 0);
     }
+
     public String getDrive(){
         return getName() + ": total:[" + size + "G] available:[" + availableSize + "G] " + names + " " + "[" + getUUID() +"]";
     }

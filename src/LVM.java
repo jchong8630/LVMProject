@@ -40,6 +40,10 @@ public class LVM {
         return pvs;
     }
 
+    public ArrayList<VolumeGroup> getVgs() {
+        return vgs;
+    }
+
     public void addDrives(PhysicalDrive drive){
         drives.add(drive);
     }

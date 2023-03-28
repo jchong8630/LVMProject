@@ -53,6 +53,17 @@ public class Runner {
             if (choice.contains("vglist")){
                 System.out.print(l.printVG());
             }
+            if (choice.contains("vgextend")){
+                choice = choice.substring(9);
+                String name = choice.substring(0, choice.indexOf(" "));
+                choice = choice.substring(choice.indexOf(" ") + 1);
+                String link = choice;
+                UUID u = UUID.randomUUID();
+                VolumeGroup v = new VolumeGroup(name, u.toString(), link, l.getPvs());
+                if(v.vgAdd(l.getPvs(), l.getVgs())){
+                    System.out.println(link + " added to " + name);
+                }
+            }
         }
 
     }
