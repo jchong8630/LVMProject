@@ -24,6 +24,10 @@ public class VolumeGroup extends LVM{
         vg.availableSize += physicalVolume.getSize();
     }
 
+    public void reduceSize(int size){
+        this.availableSize -= size;
+    }
+
     public int getSize(){
         return size;
     }

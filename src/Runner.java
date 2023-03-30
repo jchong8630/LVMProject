@@ -49,6 +49,9 @@ public class Runner {
                     System.out.println(v.getName() + " created");
                     l.addVG(v);
                 }
+                else{
+                    System.out.println(name + " creation failed");
+                }
             }
             if (choice.contains("vglist")){
                 System.out.print(l.printVG());
@@ -63,7 +66,11 @@ public class Runner {
                 if(v.vgAdd(l.getPvs(), l.getVgs())){
                     System.out.println(link + " added to " + name);
                 }
+                else{
+                    System.out.println(name + " extension failed");
+                }
             }
+
         }
 
     }
