@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LVM {
@@ -6,6 +7,7 @@ public class LVM {
     private ArrayList<PhysicalDrive> drives;
     private ArrayList<PhysicalVolume> pvs;
     private ArrayList<VolumeGroup> vgs;
+    private ArrayList<LogicalVolume> lvs;
 
 
     public LVM(String n, String UUID){
@@ -14,6 +16,7 @@ public class LVM {
         drives = new ArrayList<>();
         pvs = new ArrayList<>();
         vgs = new ArrayList<>();
+        lvs = new ArrayList<>();
     }
 
     public LVM(){
@@ -22,6 +25,7 @@ public class LVM {
         drives = new ArrayList<>();
         pvs = new ArrayList<>();
         vgs = new ArrayList<>();
+        lvs = new ArrayList<>();
     }
 
     public String getName() {
@@ -44,6 +48,11 @@ public class LVM {
         return vgs;
     }
 
+    public ArrayList<LogicalVolume> getLvs() {
+        return lvs;
+    }
+
+    public void addLV(LogicalVolume lv){lvs.add(lv);}
     public void addDrives(PhysicalDrive drive){
         drives.add(drive);
     }
@@ -71,6 +80,13 @@ public class LVM {
         String result = "";
         for (VolumeGroup vg : vgs) {
             result += vg.getDrive() + "\n";
+        }
+        return result;
+    }
+    public String printLV(){
+        String result = "";
+        for (LogicalVolume lv : lvs) {
+            result += lv.getDrive() + "\n";
         }
         return result;
     }

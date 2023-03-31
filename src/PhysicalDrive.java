@@ -9,7 +9,7 @@ public class PhysicalDrive extends LVM{
     }
 
     public String getDrive(){
-        return super.getName() + " [" + size + "G]" + "[" + super.getUUID() +"]";
+        return super.getName() + ": [" + size + "G]" + "[" + super.getUUID() +"]";
     }
 
     public int getSize() {

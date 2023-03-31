@@ -23,6 +23,6 @@ public class PhysicalVolume extends LVM{
     }
 
     public String getDrive(){
-        return getName() + " [" + size + "G]" + "[" + getUUID() +"]";
+        return getName() + ": [" + size + "G]" + "[" + getUUID() +"]";
     }
 }

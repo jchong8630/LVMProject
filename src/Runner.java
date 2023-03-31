@@ -70,6 +70,26 @@ public class Runner {
                     System.out.println(name + " extension failed");
                 }
             }
+            if (choice.contains("lvcreate")) {
+                choice = choice.substring(9);
+                String name = choice.substring(0, choice.indexOf(" "));
+                choice = choice.substring(choice.indexOf(" ") + 1);
+                int size = Integer.parseInt(choice.substring(0, choice.indexOf("G")));
+                choice = choice.substring(choice.indexOf("G") + 2);
+                String link = choice;
+                UUID u = UUID.randomUUID();
+                LogicalVolume lv = new LogicalVolume(name, u.toString(), link, size);
+                if(lv.reduceSize(l.getVgs())){
+                    l.addLV(lv);
+                    System.out.println(name + " created");
+                }
+                else{
+                    System.out.println(name + " creation failed");
+                }
+            }
+            if(choice.contains("lvlist")){
+                System.out.print(l.printLV());
+            }
 
         }
 

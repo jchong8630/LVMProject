@@ -21,4 +21,8 @@ public class LogicalVolume extends LVM{
         }
         return false;
     }
+
+    public String getDrive(){
+        return getName() + ": [" + size + "G] [" + linkName + "] [" + getUUID() +"]";
+    }
 }
