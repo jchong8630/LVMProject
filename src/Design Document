@@ -20,7 +20,16 @@ getHardDriveSize() gets the size of the hard drive that correlates with the pv n
 chekcer() checks if the pv can be linked to the hard drive
 
 VG (Subclass):
-Instance Variable - PV[], LV[]
+Instance Variable - int Size, String linkName, String[] names, int availableSize
+addSize() adds size to the volume group when another physical volume is added
+reduceSize() reduces available size
+getSize() return size
+checker() checks if the size is greater than 0 which means the volumeGroup was created
+getDrive() return a string of the drive, size, uuid in the proper format
 
 LV (Subclass):
 Instance Variable - int Size, Object VG
+reduceSize() reduces the available size of the  VolumeGroup by the size of the logical volume
+getDrive() return a string of the drive, size, uuid in the proper format
+
+
